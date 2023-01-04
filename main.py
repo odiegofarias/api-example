@@ -11,7 +11,7 @@ def lucros_prejuizos(ticker):
 
     if response.status_code == HTTPStatus.NOT_FOUND:
         print('Página não encontrada')
-    else:
+    elif response.status_code == HTTPStatus.OK:
         preco_compra = 21.04
         quantidade = 10
         data_market_price = data['results'][0]['regularMarketPrice']
