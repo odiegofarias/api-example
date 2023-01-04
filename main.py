@@ -12,10 +12,10 @@ def lucros_prejuizos(ticker):
     if response.status_code == HTTPStatus.NOT_FOUND:
         print('Página não encontrada')
     else:
-        preco_compra = 18.1
+        preco_compra = 21.04
         quantidade = 10
         data_market_price = data['results'][0]['regularMarketPrice']
-        lucro_prejuizo = round(preco_compra - data_market_price, 2) * quantidade
+        lucro_prejuizo = round((preco_compra - data_market_price) * quantidade, 2) 
     
         if 'longName' not in data['results'][0]:
             print(data['results'][0]['shortName'])
@@ -25,8 +25,10 @@ def lucros_prejuizos(ticker):
         print('R$ ', data_market_price)
         if preco_compra > data_market_price:
             print(Fore.RED + f'Prejuízo: R$ {str(lucro_prejuizo)}')
-        else:
+        elif preco_compra < data_market_price:
             print(Fore.GREEN + f'Lucro: R$ {str(lucro_prejuizo).replace("-", "")}')
+        else:
+            print(f'R$ {str(lucro_prejuizo).replace("-", "")}')
 
 
-lucros_prejuizos('MXRF11')
+lucros_prejuizos('ITUB3')
