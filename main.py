@@ -14,6 +14,11 @@ if response.status_code == 200:
     data_market_price = data['results'][0]['regularMarketPrice']
     lucro_prejuizo = round(preco_compra - data_market_price, 2) * quantidade
     
+    if 'longName' not in data['results'][0]:
+        print(data['results'][0]['shortName'])
+    else:
+        print(data['results'][0]['longName'])
+    
     print(data['results'][0]['longName'])
     print('R$ ', data_market_price)
     if preco_compra > data_market_price:
