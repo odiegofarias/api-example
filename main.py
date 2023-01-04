@@ -1,5 +1,6 @@
 import requests
 import json
+from colorama import Fore
 
 
 ticker = input('Ticker: ')
@@ -22,8 +23,8 @@ if response.status_code == 200:
     print(data['results'][0]['longName'])
     print('R$ ', data_market_price)
     if preco_compra > data_market_price:
-        print(f'Prejuízo: - R$ {str(lucro_prejuizo)}')
+        print(Fore.RED + f'Prejuízo: - R$ {str(lucro_prejuizo)}')
     else:
-        print(f'Lucro: + R$ {str(lucro_prejuizo).replace("-", "")}')
+        print(Fore.GREEN + f'Lucro: + R$ {str(lucro_prejuizo).replace("-", "")}')
 else:
     print('Página não encontrada')
